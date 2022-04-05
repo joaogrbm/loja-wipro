@@ -6,6 +6,7 @@
 - Nathalie Bozzon
 - Thiago Souza
 - Lucas Canoas
+- João Gabriel
 
 ## Requisitos  
 - A nossa loja deve conter estoque; 
