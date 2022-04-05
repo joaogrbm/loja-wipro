@@ -7,7 +7,7 @@ public class Loja {
 	static void exibirMenu(String[] produtos, double[] precos, int[] codigos, int[] estoques) {
 
 		System.out.println("CÓDIGO  PRODUTO  QNTD. PRODUTOS  PRECO UNIT.");
-		System.out.println("===============================================");
+		System.out.println("==============================================");
 
 		for (int i = 0; i < produtos.length; i++) {
 
@@ -33,6 +33,8 @@ public class Loja {
 		int opcao = 0;
 		boolean opcaoInvalida = true;
 		double precoUnitarioTotal = 0.00;
+		double desconto = 0.00;
+		double imposto = 0.00;
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -88,12 +90,14 @@ public class Loja {
 				
 				precoUnitarioTotal = precos[i] * carrinho[i][1];
 				
-				System.out.printf("  %d \t %s\t\t %d\t\t   %.2f\t\t%.2f\n",codigos[i],produtos[i],carrinho[i][1],precos[i],precoUnitarioTotal);
+				System.out.printf("  %d \t %s\t\t %d\t\t   %.2f\t  "
+						+ "%.2f\n",codigos[i],produtos[i],carrinho[i][1],precos[i],precoUnitarioTotal);
 
 				valorTotal += (precos[i] * carrinho[i][1]);
 			}
 		}
-
+		
+		imposto = valorTotal * 0.09;
 		valorTotal = valorTotal * 1.09;
 
 		do {
@@ -111,10 +115,12 @@ public class Loja {
 			switch (opcao) {
 
 			case 1:
+				desconto = valorTotal * 0.2;
 				valorTotal *= 0.8;
-				opcaoInvalida = false;
+				opcaoInvalida = false;	
 				break;
 			case 2:
+				desconto = valorTotal * 0.15;
 				valorTotal *= 0.85;
 				opcaoInvalida = false;
 				break;
@@ -131,10 +137,31 @@ public class Loja {
 			}
 
 		} while (opcaoInvalida);
+		
+		System.out.println("\nLoja WiPro Brasil\n Rua dos Devs, nº 1000 - Lojinha LTDA\n CNPJ: 100000000-00\n" );
+		
+		System.out.println("\t\t\tNota Fiscal");
+		System.out.println("Produto\t" + "  Quantidade\t" + "  Preco Unitário\t" + "\tPreço Total\t");
+		System.out.println("==================================================================");
+		
+		for (int i = 0; i < 10; i++) {
 
-		System.out.println("==================================================================");
-		System.out.printf("Foi pago o valor de %.2f Reais\n",valorTotal);
-		System.out.println("==================================================================");
+			if (carrinho[i][0] > 0) {
+				
+				precoUnitarioTotal = precos[i] * carrinho[i][1];
+				
+				System.out.printf("%s\t\t %d\t\t   %.2f\t  "
+						+ "%.2f\n",produtos[i],carrinho[i][1],precos[i],precoUnitarioTotal);
+
+			}
+		}
+		System.out.println("==================================================================\n");
+		
+		
+		
+		System.out.printf("Desconto na compra: %.2f\n Reais", desconto);
+		System.out.printf("Foi pago o valor total de %.2f Reais\n",valorTotal);
+		System.out.printf("Imposto pago (9%): %.2f\n Reais", imposto);
 
 
 		scanner.close();
