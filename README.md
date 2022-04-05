@@ -7,7 +7,7 @@
 - Thiago Souza
 - Lucas Canoas
 
-## Requisitos:  
+## Requisitos  
 - A nossa loja deve conter estoque; 
 - Caso produto esteja indisponível deve retornar a mensagem para o cliente “Produto Indisponível”;  
 - Deverá ter 3 formas de pagamento:  
