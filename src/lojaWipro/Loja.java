@@ -136,6 +136,7 @@ public class Loja {
 		System.out.printf("Foi pago o valor de %.2f Reais\n",valorTotal);
 		System.out.println("==================================================================");
 
+		
 
 		scanner.close();
 
